@@ -2,7 +2,6 @@
 
 # opção dois em:
 # import op2_listar_contatos
-gavetaDeContatos = ''
 contato1 = ''
 contato2 = ''
 contato3 = ''
@@ -139,7 +138,7 @@ while iniciarPrograma:
       contato5 = novo_contato
       print('Contato inserido com sucesso! O que deseja fazer agora?')
     else:
-      print("não existe mais espaço na agenda")
+      print("Não existe mais espaço na agenda.")
 
   #-------------------------------------------------------------
   elif opcao == 2:
