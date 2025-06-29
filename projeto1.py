@@ -142,7 +142,7 @@ while iniciarPrograma:
       print("não existe mais espaço na agenda")
 
   #-------------------------------------------------------------
-  if (opcao == 2):
+  elif opcao == 2:
     while True:
       if contato1 != '':
         separador1 = contato1.find("|")
@@ -189,5 +189,8 @@ while iniciarPrograma:
     while True:
       if contato1 == '' and contato2 == '' and contato3 == '' and contato4 == '' and contato5 == '':
         print("Não há contatos cadastrados.")
-
-  continue
+    #-------------------------------------------------------------------------------------------------
+  elif opcao == 6:
+    print("Programa encerrado. Saindo...")
+break
+    
