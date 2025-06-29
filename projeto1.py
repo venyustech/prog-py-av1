@@ -3,18 +3,17 @@
 # opção dois em:
 # import op2_listar_contatos
 gavetaDeContatos = ''
+contato1 = ''
+contato2 = ''
+contato3 = ''
+contato4 = ''
+contato5 = ''
+
 
 iniciarPrograma = True
 while iniciarPrograma:
-  print('''
-  Menu
-      1 - Inserir Contato\n
-      2 - Listar Contatos\n
-      3 - Imprimir Contato\n
-      4 - Atualizar Contato\n
-      5 - Remover Contato\n
-      6 - Sair
-  ''')
+  menu = "MENU:\n1 - Inserir Contato\n2 - Listar Contatos\n3 - Imprimir Contato\n4 - Atualizar Contato\n5 - Remover Contato\n6 - Sair"
+  print(menu)
 
   while True:
     usuarioInput = input("Escolha uma opção: ")
@@ -77,20 +76,15 @@ while iniciarPrograma:
         break
 
     #Email    CAMPO OBRIGATÓRIO
-    while True:
-      email = input("Insira o EMAIL (formato: palavra1@palavra2.palavra3): ")
-      if email == "":
-        print("Campo obrigatório*")
-      elif email.count("@") != 1:
-        print("Formato inválido. Tente novamente.")
-      else:
-        parte1 = email[:email.find("@")]
-        resto = email[email.find("@") + 1:]
-        if "." not in resto:
-          print("Formato inválido. Tente novamente.")
-        else:
-          break
-        break
+    email_valido = False 
+    while email_valido != True: 
+      email = input("Digite o EMAIL: ") 
+      posicao_arroba = email.find("@") 
+      posicao_ponto = email.find(".") 
+      if(len(email) >= 5 and email.count("@") == 1 and email.count(".") == 1 and posicao_arroba > 0 and posicao_arroba + 1 < posicao_ponto and posicao_ponto != len(email)-1): 
+        email_valido = True 
+      else: 
+        print("o valor não atende a especificação do campo")
 
     #Aniversário    CAMPO OBRIGATÓRIO
     while True:
@@ -127,17 +121,73 @@ while iniciarPrograma:
         break
 
     #guarda novo contato na gaveta de contatos quando opçao 1 é escolhida
+    novo_contato = f"{nome}|{sobrenome}|{celular}|{telefone}|{email}| {dia_aniv}|{mes_aniv}|{ano_aniv}"
 
-    contato = f"[{nome}, {sobrenome}, {celular}, {telefone}, {email}, {dia_aniv},   {mes_aniv}, {ano_aniv}]"
-    if gavetaDeContatos == '  ':
-      gavetaDeContatos = contato
+    if contato1 == '':
+      contato1 = novo_contato
+      print('Contato inserido com sucesso! O que deseja fazer agora?')
+    elif contato2 == '':
+      contato2 = novo_contato
+      print('Contato inserido com sucesso! O que deseja fazer agora?')
+    elif contato3 == '':
+      contato3 = novo_contato
+      print('Contato inserido com sucesso! O que deseja fazer agora?')
+    elif contato4 == '':
+      contato4 = novo_contato
+      print('Contato inserido com sucesso! O que deseja fazer agora?')
+    elif contato5 == '':
+      contato5 = novo_contato
+      print('Contato inserido com sucesso! O que deseja fazer agora?')
     else:
-      gavetaDeContatos += ',' + contato
-
-    print('Contato inserido com sucesso!')
+      print("não existe mais espaço na agenda")
 
   #-------------------------------------------------------------
   if (opcao == 2):
-    print("Gaveta de Contatos:", gavetaDeContatos)
+    while True:
+      if contato1 != '':
+        separador1 = contato1.find("|")
+        separador2 = contato1.find("|", separador1 + 1)
+        nome = contato1[0:separador1]
+        sobrenome = contato1[separador1+1 : separador2]
+        print("1 -", nome, sobrenome, sep=" ")
+        break
+    while True:
+      if contato2 != '':
+        separador1 = contato2.find("|")
+        separador2 = contato2.find("|", separador1 + 1)
+        nome = contato2[0:separador1]
+        sobrenome = contato2[separador1+1 : separador2]
+        print("2 -", nome, sobrenome, sep=" ")
+        break
+    
+    while True:
+      if contato3 != '':
+        separador1 = contato3.find("|")
+        separador2 = contato3.find("|", separador1 + 1)
+        nome = contato3[0:separador1]
+        sobrenome = contato3[separador1+1 : separador2]
+        print("3 -", nome, sobrenome, sep=" ")
+        break
+
+    while True:    
+      if contato4 != '':
+        separador1 = contato4.find("|")
+        separador2 = contato4.find("|", separador1 + 1)
+        nome = contato4[0:separador1]
+        sobrenome = contato4[separador1+1 : separador2]
+        print("4 -", nome, sobrenome, sep=" ")
+        break
+
+    while True:   
+      if contato5 != '':
+        separador1 = contato5.find("|")
+        separador2 = contato5.find("|", separador1 + 1)
+        nome = contato5[0:separador1]
+        sobrenome = contato5[separador1+1 : separador2]
+        print("5 -", nome, sobrenome, sep=" ")
+        break
+    while True:
+      if contato1 == '' and contato2 == '' and contato3 == '' and contato4 == '' and contato5 == '':
+        print("Não há contatos cadastrados.")
 
   continue
